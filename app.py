@@ -3,27 +3,24 @@ import streamlit as st
 def main():
     st.markdown("# Covid19 Commute Calculator")
     st.markdown("## Should I go to the office today?")
-    st.markdown("""A seriously under-researched, likely invalid, statistical toy to 
+    st.markdown("""An under-researched, likely invalid, statistical toy to 
                 illustrate the power of social separation by estimating the 
-                probability (f) of encountering a live Covid19 case on your 
+                probability of encountering a live Covid19 case on your 
                 daily return trip commute into the city.
-                This makes no attempt to include the effects of crowd dynamics, 
+                This makes no attempt to model the effects of crowd dynamics, 
                 nor live cases staying at home, nor transmission vectors, etc.
                 Do not use this for anything!""")
 
-    st.markdown("""Generally, the probability of a finding at least 1 case in a 
-                group of N people given a background number of cases in the 
-                local city population is a resample with replacement (assume m >> 1)""")
+    st.markdown("""Generally, the probability (f) of a finding at least 1 case in a 
+                group of N people given a background number of cases (m) in the 
+                local city population (M) is a resample with replacement (assume m >> 1)""")
 
-    st.latex(r'P(X>0) = 1 - (1-p)^{N} = f')
-    st.latex(r'\text{where:} p = \frac{m}{M} = \frac{\text{count cases in pop}}{\text{count pop}}')
-
-    st.markdown('Assume that N is sampled with replacement from M, assume m >> 1')
+    st.latex(r'P(X>0) = 1 - (1-p)^{N} = f, \,p = \frac{m}{M}')
 
     commute_people_per_min = {'Walk / Cycle': 3.,
                              'Ferry': 3.,
                             'Train / Subway (direct)': 8., 
-                            'Train / Subway (1+ change)': 20.}
+                            'Train / Subway (1+ change at a busy station)': 20.}
 
     commute_method = st.radio('Commute Method', list(commute_people_per_min.keys()), index=2)
     n_commuters = commute_people_per_min[commute_method]
@@ -33,7 +30,7 @@ def main():
     commute_duration = st.slider('Commute Duration (mins)', min_value=10, max_value=120, value=45, step=15)
 
     N = commute_people_per_min[commute_method] * commute_duration * 2
-    st.write(f'Approx {N:.0f} commuters encountered during a round trip commute')
+    st.write(f'N = approx {N:.0f} commuters encountered during a round trip commute')
 
     m = st.slider('Count of live cases (m) in the city', min_value=10, max_value=5000, value=100, step=50)
     M = st.slider('Population in the city (M)', min_value=500000, max_value=20000000, 
@@ -46,7 +43,7 @@ def main():
 
     st.write("Est. probability (f) of encountering a Covid19 case during your day in the city is:", f'{f:.1%}')
 
-    st.write("Assuming a 5 day week: ", f'{1 - (1-f)**5:.1%}')
+    st.write("... and over a 5 day week: ", f'{1 - (1-f)**5:.1%}')
 
 
 
