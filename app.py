@@ -2,8 +2,7 @@ import streamlit as st
 
 def main():
     st.markdown("# Covid19 Commute Calculator")
-    st.markdown("## Should I go to the office today?")
-    st.markdown("""An under-researched, likely invalid, statistical toy to 
+    st.markdown("""An under-researched, invalid, statistical toy to 
                 illustrate the power of social separation by estimating the 
                 probability of encountering a live Covid19 case on your 
                 daily return trip commute into the city.
@@ -11,11 +10,11 @@ def main():
                 nor live cases staying at home, nor transmission vectors, etc.
                 Do not use this for anything!""")
 
-    st.markdown("""Generally, the probability (f) of a finding at least 1 case in a 
+    st.markdown("""The probability P(X>0) of a finding at least 1 case in a 
                 group of N people given a background number of cases (m) in the 
-                local city population (M) is a resample with replacement (assume m >> 1)""")
+                local city population (M) is a resample with replacement (m >> 1)""")
 
-    st.latex(r'P(X>0) = 1 - (1-p)^{N} = f, \,p = \frac{m}{M}')
+    st.latex(r'P(X>0) = 1 - (1-p)^{N} = f, \, \, \,p = \frac{m}{M}')
 
     commute_people_per_min = {'Walk / Cycle': 3.,
                              'Ferry': 3.,
