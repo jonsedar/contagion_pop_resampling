@@ -2,7 +2,7 @@ import streamlit as st
 
 def main():
     st.markdown("# Covid19 Commute Calculator")
-    st.markdown("""An under-researched, invalid, statistical toy to 
+    st.markdown("""An under-researched, likely invalid, statistical toy to 
                 illustrate the power of social separation by estimating the 
                 probability of encountering a live Covid19 case on your 
                 daily return trip commute into the city.
@@ -16,15 +16,16 @@ def main():
 
     st.latex(r'P(X>0) = 1 - (1-p)^{N} = f, \, \, \,p = \frac{m}{M}')
 
-    commute_people_per_min = {'Walk / Cycle': 3.,
+    commute_people_per_min = {'Walk / Cycle': 2.,
                              'Ferry': 3.,
                             'Train / Subway (direct)': 8., 
-                            'Train / Subway (1+ change at a busy station)': 20.}
+                            'Train / Subway (1+ change at a busy station)': 12.}
 
     commute_method = st.radio('Commute Method', list(commute_people_per_min.keys()), index=2)
     n_commuters = commute_people_per_min[commute_method]
 
-    st.write(f'This method assumes you cross paths with an average {n_commuters:.0f} new commuters per minute')
+    st.write(f"""This assumes you come into reasonably close contact with an average 
+                N = {n_commuters:.0f} new commuters per min over the entire commute.""")
 
     commute_duration = st.slider('Commute Duration (mins)', min_value=10, max_value=120, value=45, step=15)
 
@@ -40,9 +41,11 @@ def main():
 
     f = 1 - (1-(m/M))**N
 
-    st.write("Est. probability (f) of encountering a Covid19 case during your day in the city is:", f'{f:.1%}')
+    st.write(f"""Est. probability P(X>0) of encountering a Covid19 case during 
+             your daily return commute is: {f:.1%}""")
 
-    st.write("... and over a 5 day week: ", f'{1 - (1-f)**5:.1%}')
+    st.write(f"""... and over a 5 day week P(X>0|5 days) = 1 - (1-f)^5 is: 
+            {1 - (1-f)**5:.1%}""")
 
 
 
