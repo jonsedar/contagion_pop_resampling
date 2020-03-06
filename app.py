@@ -19,7 +19,7 @@ def main():
     st.latex(r'P(X>0) = 1 - (1-p)^{N} = f, \, \text{ ... where } \, p = \frac{m}{M}')
 
     commute_people_per_min = {'Walk / Cycle': 1.,
-                             'Ferry': 3.,
+                             'Ferry': 4.,
                             'Train / Subway (direct)': 8., 
                             'Train / Subway (1+ change at a busy station)': 12.}
 
