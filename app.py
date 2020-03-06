@@ -1,5 +1,4 @@
 import streamlit as st
-import numpy as np
 
 def main():
     st.markdown("# Covid19 Commute Calculator")
