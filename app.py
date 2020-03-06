@@ -14,7 +14,7 @@ def main():
                 group of N people given a background number of cases (m) in the 
                 local city population (M) is a resample with replacement (m >> 1)""")
 
-    st.latex(r'P(X>0) = 1 - (1-p)^{N} = f, \, where \, p = \frac{m}{M}')
+    st.latex(r'P(X>0) = 1 - (1-p)^{N} = f, \, \text{ ... where } \, p = \frac{m}{M}')
 
     commute_people_per_min = {'Walk / Cycle': 2.,
                              'Ferry': 3.,
