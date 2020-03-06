@@ -14,7 +14,7 @@ def main():
                 group of N people given a background number of cases (m) in the 
                 local city population (M) is a resample with replacement (m >> 1)""")
 
-    st.latex(r'P(X>0) = 1 - (1-p)^{N} = f, \, \, \,p = \frac{m}{M}')
+    st.latex(r'P(X>0) = 1 - (1-p)^{N} = f, \, where \, p = \frac{m}{M}')
 
     commute_people_per_min = {'Walk / Cycle': 2.,
                              'Ferry': 3.,
@@ -24,8 +24,10 @@ def main():
     commute_method = st.radio('Commute Method', list(commute_people_per_min.keys()), index=2)
     n_commuters = commute_people_per_min[commute_method]
 
-    st.write(f"""This assumes you come into reasonably close contact with an average 
-                N = {n_commuters:.0f} new commuters per min over the entire commute.""")
+    st.write(f"""Using nothing but utter guesswork, this assumes you come 
+                into reasonably close contact with an average 
+                N = {n_commuters:.0f} new commuters per min over the entire commute, 
+                incl. walking through stations, crowded streets etc.""")
 
     commute_duration = st.slider('Commute Duration (mins)', min_value=10, max_value=120, value=45, step=15)
 
