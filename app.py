@@ -5,10 +5,11 @@ def main():
     st.markdown("## Should I go to the office today?")
     st.markdown("""A seriously under-researched, likely invalid, statistical toy to 
                 illustrate the power of social separation by estimating the 
-                probability (f) of encountering a liveCovid19 case on your 
+                probability (f) of encountering a live Covid19 case on your 
                 daily return trip commute into the city.
                 This makes no attempt to include the effects of crowd dynamics, 
-                nor live cases staying at home, nor transmission vectors.""")
+                nor live cases staying at home, nor transmission vectors, etc.
+                Do not use this for anything!""")
 
     st.markdown("""Generally, the probability of a finding at least 1 case in a 
                 group of N people given a background number of cases in the 
