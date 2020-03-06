@@ -43,8 +43,8 @@ def main():
 
     f = 1 - (1-(m/M))**N
 
-    st.write(f"""Est. probability P(X>0) of encountering a Covid19 case during 
-             your daily return commute is: {f:.1%}""")
+    st.write(f"""Est. prob. P(X>0) of encountering a Covid19 case during 
+             your daily round trip commute is: {f:.1%}""")
 
     st.write(f"""... and over a 5 day week P(X>0|5 days) = 1 - (1-f)^5 is: 
             {1 - (1-f)**5:.1%}""")
