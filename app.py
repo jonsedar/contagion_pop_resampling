@@ -23,7 +23,7 @@ def main():
                             max_value=20000000, value=8500000, step=500000)
 
     p = m/M
-    st.sidebar.markdown(f'Cases in population $p = {p*100:.3f}\%$')
+    #st.sidebar.markdown(f'Cases in population $p = {p*100:.3f}\%$')
 
     st.sidebar.markdown('### Commute Details')
 
@@ -36,33 +36,35 @@ def main():
                             list(commute_people_per_min.keys()), index=2)
     n_commuters = commute_people_per_min[commute_method]
 
-    st.sidebar.markdown(f"""Assumes aerosol contact ($\Delta \ 2m$) with 
+    st.sidebar.markdown(f"""<sub><sup>This method assumes aerosol contact ($\Delta \ 2m$) with 
                 ${n_commuters:.0f}$ new commuters per min during commute, 
-                incl. busy stations, crowded streets etc.""")
+                inc. busy stations, crowded streets etc.</sup></sub>""", 
+                unsafe_allow_html=True)
 
     commute_duration = st.sidebar.slider('Commute Duration (mins)', min_value=15, 
     max_value=120, value=45, step=15)
 
     N = commute_people_per_min[commute_method] * commute_duration * 2
 
-    st.sidebar.markdown(f'$N \\approx$ {N:.0f} commuters encountered during ' + 
-                        'a round trip commute')
+    # st.sidebar.markdown(f'$N \\approx$ {N:.0f} commuters encountered during ' + 
+    #                     'a round trip commute')
 
     #st.sidebar.markdown("Now view your $P(X>0) \\Longrightarrow$")
 
 
     st.latex(r'P(X>0) = 1 - (1-p)^{N} = f, \, \text{ ... where } \, p = \frac{m}{M}')
 
-    st.markdown("""$\\Longleftarrow$ Setup the sliders on the left according 
-                    to your situation (default is NYC March 2020)""")
-
+    st.markdown("""$\\Longleftarrow$ _Setup the sliders on the left sidebar 
+                according to your situation_""")
 
     f = 1 - (1-(p))**N
 
     st.markdown('#### $\\Longrightarrow$ Results:')
 
-    st.info(f"""Est. prob. of encountering a contagious cough or cold during 
-             your daily round trip commute is: $P(X>0) = {f*100:.1f}\\%$""")
+    st.info(f"""Proportion of cases in population $p = {p*100:.3f}\%$ 
+            \nCommuters encountered during a round trip commute $N \\approx$ {N:.0f}
+            \nYour est. prob. of encountering a contagious cough or cold during 
+             the daily round trip commute is: $P(X>0) = {f*100:.1f}\\%$""")
     
     f5 = 1 - (1-f)**5
     days= 'days'
@@ -71,11 +73,12 @@ def main():
                 = 1 - (1-f)^5 = {f5*100:.1f}\\%$""")
 
     st.markdown('---')
-    st.markdown("""\** NOTE: This naive model is only to illustrate the power 
+    st.markdown("""<sub>\** NOTE: This naive model is only to illustrate the power 
                 of social separation, and makes no attempt to model 
                 case discovery rates / transmission rates or vectors / 
                 crowd dynamics / self quarantine etc.
-                **Do not use this for anything!**""")
+                **Do not use this for anything!**</sub>""",
+                unsafe_allow_html=True)
 
 
 
