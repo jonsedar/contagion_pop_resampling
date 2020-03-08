@@ -55,9 +55,9 @@ def main():
 
     st.markdown('#### $\\Longrightarrow$ Results:')
 
-    st.info(f"""Proportion of $m={m:.0f}$ cases in $M = {M/1e6:.1f}M$ pop.: $p = {p*100:.4f}\%$ 
-            \nCommuters encountered during a round trip commute: $N \\approx {N:.0f}$
-            \nEst. prob. of encountering a contagious cough or cold: $P(X>0) = {f*100:.1f}\%$""")
+    st.info(f"""Proportion of $m={m:.0f}$ cases in $M = {M/1e6:.1f}M$ pop. $p = {p*100:.4f}\%$ 
+            \nCommuters encountered during a round trip journey $N \\approx {N:.0f}$
+            \nEst. prob. of encountering a contagious cough or cold $P(X>0) = {f*100:.1f}\%$""")
     
     st.info(f"""... and over a 5 day week: $P(X>0|5 \, days) 
                 = 1 - (1-f)^5 = {(1 - (1-f)**5) *100:.1f}\\%$""")
