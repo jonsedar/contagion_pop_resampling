@@ -2,7 +2,7 @@ import streamlit as st
 
 def main():
     st.markdown("## Contagious Coughs & Colds 2019 Commute Calculator")
-    st.markdown("""An under-researched** statistical toy to 
+    st.markdown("""An under-researched, statistical toy** to 
                 estimate the 
                 probability of encountering someone with a contagious cough or 
                 cold during your daily round trip commute into the city.""")
@@ -35,7 +35,7 @@ def main():
                             list(commute_people_per_min.keys()), index=2)
     n_commuters = commute_people_per_min[commute_method]
 
-    st.sidebar.markdown(f"""<sub><sup>This method assumes aerosol contact 
+    st.sidebar.markdown(f"""<sub><sup>This method assumes \** aerosol contact 
                 ($\Delta \ 2m$) with 
                 ${n_commuters:.0f}$ new commuters per min during commute, 
                 inc. busy stations, crowded streets etc.</sup></sub>""", 
@@ -69,10 +69,10 @@ def main():
     #             whether to attend.""")
 
 
-    st.markdown('---')
+    # st.markdown('---')
     st.markdown("""<sub>\** NOTE: This naive model is only to illustrate the power 
                 of social separation, and makes no attempt to model 
-                case discovery rates / transmission rates or vectors / 
+                case discovery rates / transmission rates or methods or vectors / 
                 crowd dynamics / self quarantine etc.
                 **Do not use this for anything!**</sub>""",
                 unsafe_allow_html=True)
