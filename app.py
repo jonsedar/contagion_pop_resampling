@@ -17,9 +17,9 @@ def main():
 
     st.sidebar.markdown('### Confirmed Cases')
 
-    m = st.sidebar.slider('Count of live cases (m) in the city', min_value=10, 
-                            max_value=5000, value=100, step=50)
-    M = st.sidebar.slider('Population in the city (M)', min_value=500000, 
+    m = st.sidebar.slider('Count of confirmed cases (m) in the city', min_value=50, 
+                            max_value=2000, value=100, step=50)
+    M = st.sidebar.slider('Population (M) in the city', min_value=500000, 
                             max_value=20000000, value=8500000, step=500000)
 
     p = m/M
@@ -31,7 +31,7 @@ def main():
                             'Train / Subway (direct)': 8., 
                             'Train / Subway (1+ change)': 12.}
 
-    commute_method = st.sidebar.radio('Commute Method', 
+    commute_method = st.sidebar.radio('Primary Commute Method', 
                             list(commute_people_per_min.keys()), index=2)
     n_commuters = commute_people_per_min[commute_method]
 
@@ -55,18 +55,18 @@ def main():
 
     st.markdown('#### $\\Longrightarrow$ Results:')
 
-    st.info(f"""Proportion of $m={m:.0f}$ cases in $M = {M/1e6:.1f}M$ pop. $p = {p*100:.4f}\%$ 
-            \nCommuters encountered during a round trip journey $N \\approx {N:.0f}$
-            \nEst. prob. of encountering a contagious cough or cold $P(X>0) = {f*100:.1f}\%$""")
+    st.info(f"""Proportion of cases ($m={m:.0f}, M = {M/1e6:.1f}M$): $p = {p*100:.4f}\%$ 
+            \nCommuters encountered during a round trip: $N \\approx {N:.0f}$
+            \n**Est. prob. of encountering a contagious cough or cold:** $P(X>0) = {f*100:.1f}\%$""")
     
     st.info(f"""... and over a 5 day week: $P(X>0|5 \, days) 
                 = 1 - (1-f)^5 = {(1 - (1-f)**5) *100:.1f}\\%$""")
 
-    st.markdown("""Additional hack for Conference attendance: change the sliders
-                to generate $p$ appropriate to the sum of the expected attendees' 
-                home towns / states / countries and set $N$ appropriate to the 
-                number of conference attendees. Now $P(X>0)$ can help you decide 
-                whether to attend.""")
+    # st.markdown("""Additional hack for Conference attendance: change the sliders
+    #             to generate $p$ appropriate to the sum of the expected attendees' 
+    #             home towns / states / countries and set $N$ appropriate to the 
+    #             number of conference attendees. Now $P(X>0)$ can help you decide 
+    #             whether to attend.""")
 
 
     st.markdown('---')
