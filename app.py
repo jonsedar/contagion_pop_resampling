@@ -18,7 +18,7 @@ def main():
     st.sidebar.markdown('### Confirmed Cases')
 
     m = st.sidebar.slider('Count of confirmed cases (m) in the city', min_value=50, 
-                            max_value=2000, value=100, step=50)
+                            max_value=200000, value=30000, step=5000)
     M = st.sidebar.slider('Population (M) in the city', min_value=500000, 
                             max_value=20000000, value=8500000, step=500000)
 
